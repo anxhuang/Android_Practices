@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/tom"
+        style="@style/sTablePurple"
+        android:layout_centerHorizontal="true"
+        android:text="TOM"
+        />
+
+    <TextView
+        style="@style/sTablePurple"
+        android:layout_toLeftOf="@id/tom"
+        android:text="KEVIN"
+        />
+
+    <TextView
+        style="@style/sTablePurple"
+        android:layout_toRightOf="@id/tom"
+        android:text="JOHN"
+        />
+
+    <TextView
+        android:id="@+id/linda"
+        style="@style/sTableOrange"
+        android:layout_alignParentBottom="true"
+        android:text="LINDA" />
+
+    <TextView
+        style="@style/sTableOrange"
+        android:layout_above="@id/linda"
+        android:text="MARIA" />
+
+    <TextView
+        style="@style/sTableOrange"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/linda"
+        android:text="COCO" />
+
+    <TextView
+        android:id="@+id/amy"
+        style="@style/sTableCyan"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="AMY" />
+
+    <TextView
+        android:id="@+id/jimmy"
+        style="@style/sTableCyan"
+        android:layout_above="@id/amy"
+        android:layout_alignParentRight="true"
+        android:text="JIMMY" />
+    <TextView
+        style="@style/sTableCyan"
+        android:layout_above="@id/jimmy"
+        android:layout_alignParentRight="true"
+        android:text="STEVE" />
+
+</RelativeLayout>

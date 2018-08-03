@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="0"
+        android:textSize="80dp"/>
+
+    <Button
+        android:id="@+id/btn_triple"
+        style="@style/basicButton"
+        android:text="三分球"/>
+
+    <Button
+        android:id="@+id/btn_double"
+        style="@style/basicButton"
+        android:text="兩分球"/>
+
+    <Button
+        android:id="@+id/btn_penalty"
+        style="@style/basicButton"
+        android:text="罰球"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/btn_reset"
+        style="@style/basicButton"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:text="重置"/>
+
+</LinearLayout>
