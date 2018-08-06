@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Lab04_Checkbox</string>
+    <dimen name="customTextSize">24sp</dimen>
+</resources>

@@ -8,28 +8,101 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tv_score"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="0"
-        android:textSize="80dp"/>
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_triple"
-        style="@style/basicButton"
-        android:text="三分球"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_double"
-        style="@style/basicButton"
-        android:text="兩分球"/>
+            <TextView
+                android:id="@+id/tv_team"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="黃蜂"
+                android:textSize="30dp"
+                android:gravity="center"/>
 
-    <Button
-        android:id="@+id/btn_penalty"
-        style="@style/basicButton"
-        android:text="罰球"/>
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="80dp"/>
+
+            <Button
+                android:id="@+id/btn_triple"
+                style="@style/basicButton"
+                android:text="三分球"/>
+
+            <Button
+                android:id="@+id/btn_double"
+                style="@style/basicButton"
+                android:text="兩分球"/>
+
+            <Button
+                android:id="@+id/btn_penalty"
+                style="@style/basicButton"
+                android:text="罰球"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_teamB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="火箭"
+                android:textSize="30dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/tv_scoreB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="80dp"/>
+
+            <Button
+                android:id="@+id/btn_tripleB"
+                style="@style/basicButton"
+                android:text="三分球"
+                android:onClick="onButtonDownB"/>
+
+            <Button
+                android:id="@+id/btn_doubleB"
+                style="@style/basicButton"
+                android:text="兩分球"
+                android:onClick="onButtonDownB"/>
+
+            <Button
+                android:id="@+id/btn_penaltyB"
+                style="@style/basicButton"
+                android:text="罰球"
+                android:onClick="onButtonDownB"/>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -41,6 +114,7 @@
         style="@style/basicButton"
         android:layout_width="wrap_content"
         android:layout_gravity="center"
-        android:text="重置"/>
+        android:text="重置"
+        android:onClick="onBtnReset"/>
 
 </LinearLayout>

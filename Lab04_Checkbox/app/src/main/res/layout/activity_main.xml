@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TOPPINGS"
+        android:textSize="@dimen/customTextSize"/>
+
+    <CheckBox
+        android:id="@+id/cb_toppings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="泡菜"
+        android:textSize="@dimen/customTextSize"
+        android:layout_marginTop="16dp"
+        android:onClick="onButtonDown"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QUANTITY"
+        android:textSize="@dimen/customTextSize"
+        android:layout_marginTop="16dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_decrease"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="onButtonDown"
+            android:text="-"
+            />
+
+        <TextView
+            android:id="@+id/tv_qty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="0"
+            android:textSize="@dimen/customTextSize"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/btn_increase"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="onButtonDown"
+            android:text="+" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="PRICE"
+        android:textSize="@dimen/customTextSize"/>
+
+    <TextView
+        android:id="@+id/tv_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="NT$"
+        android:textSize="@dimen/customTextSize"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/btn_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="onButtonDown"
+        android:text="ORDER"
+        android:textSize="@dimen/customTextSize"/>
+
+</LinearLayout>
