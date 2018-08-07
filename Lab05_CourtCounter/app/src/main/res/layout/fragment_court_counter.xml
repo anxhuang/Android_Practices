@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CourtCounterFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_team"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="隊名"
+            android:textSize="30dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="80dp"/>
+
+        <Button
+            android:id="@+id/btn_triple"
+            style="@style/basicButton"
+            android:text="三分球"
+            android:onClick="onButtonDown"/>
+            <!-- onClick屬性只能在MainActivity實現 -->
+
+        <Button
+            android:id="@+id/btn_double"
+            style="@style/basicButton"
+            android:text="兩分球"
+            android:onClick="onButtonDown"/>
+
+        <Button
+            android:id="@+id/btn_penalty"
+            style="@style/basicButton"
+            android:text="罰球"
+            android:onClick="onButtonDown"/>
+
+    </LinearLayout>
+
+</FrameLayout>

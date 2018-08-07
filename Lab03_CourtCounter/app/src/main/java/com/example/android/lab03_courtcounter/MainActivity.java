@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onButtonDown(View view){
+    public void onButtonDown(View view){ //偷偷寫在style裡面 IDE會找不到 不要這樣寫
         switch (view.getId()){
             case R.id.btn_triple:
                 m_int_score += 3;

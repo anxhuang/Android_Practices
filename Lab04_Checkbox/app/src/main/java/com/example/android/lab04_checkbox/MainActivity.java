@@ -20,13 +20,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        init();
+    }
+
+    private void init(){
+        m_cb_toppings = findViewById(R.id.cb_toppings);
         m_tv_qty = findViewById(R.id.tv_qty);
         m_tv_total = findViewById(R.id.tv_total);
     }
 
+    private void clearMsg(){
+        sb.delete(0, sb.length());
+        m_tv_total.setText(sb);
+    }
+
     public void onButtonDown(View view) {
         m_int_qty = Integer.parseInt(m_tv_qty.getText().toString());
-        m_cb_toppings = findViewById(R.id.cb_toppings);
+
+        //因為是重複用同一個物件 一定要先歸零
+        clearMsg();
+
         switch (view.getId()) {
             case R.id.cb_toppings:
                 System.out.println(m_cb_toppings.isChecked() ? "有勾" : "沒有勾");
@@ -38,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 m_int_qty = Math.max(0, --m_int_qty);
                 break;
             case R.id.btn_order:
-
-                //一定要先歸零
-                sb.delete(0, sb.length());
                 sb  .append("Name: 鳴人")
                     .append("\n臭豆腐")
                     .append("\n加泡菜？ ")

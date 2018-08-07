@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!--fragment標籤內一定要有android:name屬性 指定到對應的activity-->
+        <fragment
+            android:id="@+id/fragment_team_a"
+            android:name="com.example.android.lab05_courtcounter.CourtCounterFragment"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_court_counter"
+            />
+
+        <!--中間分隔線-->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:color/darker_gray"/>
+
+        <fragment
+            android:id="@+id/fragment_team_b"
+            android:name="com.example.android.lab05_courtcounter.CourtCounterFragment"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_court_counter"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_reset"
+        style="@style/basicButton"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="重置"
+        android:onClick="onBtnReset"/>
+
+</RelativeLayout>
