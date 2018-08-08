@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="teamFontSize">36sp</dimen>
+    <dimen name="scoreFontSize">90sp</dimen>
+    <dimen name="btnFontSize">24sp</dimen>
+</resources>
