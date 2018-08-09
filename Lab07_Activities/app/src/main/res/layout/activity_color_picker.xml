@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ColorPickerActivity">
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <RadioButton
+            style="@style/basicRadio"
+            android:id="@+id/radio_holo_red_light"
+            android:text="holo_red_light"
+            android:textColor="@android:color/holo_red_light"
+            android:buttonTint="@android:color/holo_red_light"
+            android:onClick="clickColor"
+            android:checked="true"/>
+
+        <RadioButton
+            style="@style/basicRadio"
+            android:id="@+id/radio_holo_orange_dark"
+            android:text="holo_orange_dark"
+            android:textColor="@android:color/holo_orange_dark"
+            android:buttonTint="@android:color/holo_orange_dark"
+            android:onClick="clickColor"/>
+
+        <RadioButton
+            style="@style/basicRadio"
+            android:id="@+id/radio_holo_green_light"
+            android:text="holo_green_light"
+            android:textColor="@android:color/holo_green_light"
+            android:buttonTint="@android:color/holo_green_light"
+            android:onClick="clickColor"/>
+
+        <RadioButton
+            style="@style/basicRadio"
+            android:id="@+id/radio_holo_blue_dark"
+            android:text="holo_blue_dark"
+            android:textColor="@android:color/holo_blue_dark"
+            android:buttonTint="@android:color/holo_blue_dark"
+            android:onClick="clickColor"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="CANCEL"
+                android:onClick="cancel"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="16dp"
+                android:text="OK"
+                android:onClick="ok"/>
+
+
+        </LinearLayout>
+
+
+    </RadioGroup>
+
+</RelativeLayout>
