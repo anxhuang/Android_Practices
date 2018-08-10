@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".QuizActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="No"
+        android:textSize="60dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:text="Quiz here"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:background="#DDD"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <RadioButton
+            style="@style/radioAnswer"
+            android:id="@+id/radio_answerA"
+            android:text="Answer A"/>
+
+        <RadioButton
+            style="@style/radioAnswer"
+            android:id="@+id/radio_answerB"
+            android:text="Answer B"/>
+        <RadioButton
+            style="@style/radioAnswer"
+            android:id="@+id/radio_answerC"
+            android:text="Answer C"/>
+
+    </RadioGroup>
+
+
+</LinearLayout>

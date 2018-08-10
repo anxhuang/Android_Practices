@@ -57,7 +57,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:text="選擇圖片"
-                android:onClick="clickImage"
+                android:onClick="selectImage"
                 />
 
         </LinearLayout>
