@@ -8,6 +8,7 @@
     tools:context=".QuizActivity">
 
     <TextView
+        android:id="@+id/tv_no"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -16,6 +17,7 @@
         android:textSize="60dp"/>
 
     <TextView
+        android:id="@+id/tv_quiz"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -31,19 +33,32 @@
 
         <RadioButton
             style="@style/radioAnswer"
-            android:id="@+id/radio_answerA"
-            android:text="Answer A"/>
+            android:id="@+id/radio_a"
+            android:text="Answer A"
+            android:onClick="clickAnswer"/>
 
         <RadioButton
             style="@style/radioAnswer"
-            android:id="@+id/radio_answerB"
-            android:text="Answer B"/>
+            android:id="@+id/radio_b"
+            android:text="Answer B"
+            android:onClick="clickAnswer"/>
+
         <RadioButton
             style="@style/radioAnswer"
-            android:id="@+id/radio_answerC"
-            android:text="Answer C"/>
+            android:id="@+id/radio_c"
+            android:text="Answer C"
+            android:onClick="clickAnswer"/>
 
     </RadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:text="NEXT"
+        android:onClick="clickNext"/>
 
 
 </LinearLayout>
