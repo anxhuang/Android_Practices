@@ -1,6 +1,7 @@
 package com.example.android.lab08_quizgame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.service.autofill.TextValueSanitizer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -59,6 +60,17 @@ public class QuizActivity extends AppCompatActivity {
         Log.d(TAG,"onResume() no:"+no+" mAnswer[no]:"+mAnswer[no]);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor editor = getSharedPreferences("com.example.android.lab08_quizgame", MODE_PRIVATE).edit();
+        //只能用for做editor.putInt();
+        for(int i=0; i<mAnswer.length; i++){
+            editor.putInt("save_"+i,mAnswer[i]);
+        }
+        editor.commit();
+    }
+
     public void clickAnswer(View view){
         mAnswer[no] = view.getId();
     }
@@ -79,6 +91,7 @@ public class QuizActivity extends AppCompatActivity {
         intent.putExtra(MainActivity.BUNDLE_KEY_CURRENT, no);
         intent.putExtra(MainActivity.BUNDLE_KEY_ANSWER, mAnswer);
         startActivity(intent);
+        overridePendingTransition(R.anim.right_bottom_in,R.anim.left_bottom_out);
     }
 
     @Override

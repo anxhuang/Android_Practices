@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">Lab08_QuizGame</string>
+    <string-array name="quiz_text">
+        <item>哈利波特裡面的校長叫什麼名字？</item>
+        <item>雙龍出海？</item>
+        <item>無三不成禮？</item>
+        <item>四通八達？</item>
+        <item>五告喝加</item>
+    </string-array>
+    <string-array name="item_text_q1">
+            <item>A Q1答案A</item>
+            <item>B Q1答案B</item>
+            <item>C Q1答案C</item>
+    </string-array>
+    <string-array name="item_text_q2">
+            <item>A Q2答案A</item>
+            <item>B Q1答案B</item>
+            <item>C Q1答案C</item>
+    </string-array>
+    <string-array name="item_text_q3">
+            <item>A Q3答案A</item>
+            <item>B Q1答案B</item>
+            <item>C Q1答案C</item>
+    </string-array>
+    <string-array name="item_text_q4">
+            <item>A Q4答案A</item>
+            <item>B Q1答案B</item>
+            <item>C Q1答案C</item>
+    </string-array>
+    <string-array name="item_text_q5">
+            <item>A Q5答案A</item>
+            <item>B Q1答案B</item>
+            <item>C Q1答案C</item>
+    </string-array>
 </resources>

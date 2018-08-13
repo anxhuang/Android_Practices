@@ -39,6 +39,7 @@
                 android:layout_marginLeft="32dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:text="繼續進度"
+                android:visibility="gone"
                 android:onClick="loadGame"/>
 
         </LinearLayout>

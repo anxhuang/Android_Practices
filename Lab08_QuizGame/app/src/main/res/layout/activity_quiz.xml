@@ -22,34 +22,16 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="8dp"
-        android:text="Quiz here"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:background="#DDD"/>
+        android:background="#DDD"
+        tools:text="Quiz here"/>
 
-    <RadioGroup
-        android:layout_width="match_parent"
+    <!--使用在多個畫面但有相同layout時-->
+    <include
+        android:id="@+id/answer_group"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp">
-
-        <RadioButton
-            style="@style/radioAnswer"
-            android:id="@+id/radio_a"
-            android:text="Answer A"
-            android:onClick="clickAnswer"/>
-
-        <RadioButton
-            style="@style/radioAnswer"
-            android:id="@+id/radio_b"
-            android:text="Answer B"
-            android:onClick="clickAnswer"/>
-
-        <RadioButton
-            style="@style/radioAnswer"
-            android:id="@+id/radio_c"
-            android:text="Answer C"
-            android:onClick="clickAnswer"/>
-
-    </RadioGroup>
+        layout="@layout/answer_group"/>
 
     <Button
         android:layout_width="wrap_content"

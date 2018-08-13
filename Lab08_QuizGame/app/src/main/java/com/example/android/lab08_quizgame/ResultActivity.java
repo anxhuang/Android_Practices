@@ -41,4 +41,10 @@ public class ResultActivity extends AppCompatActivity {
         result_list = findViewById(R.id.result_list);
         result_list.setText(sb_rs);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.right_bottom_in,R.anim.left_bottom_out);
+    }
 }

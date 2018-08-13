@@ -23,4 +23,4 @@ Fragments: values/dimens, strings.xml, -hXXXdp-port, Fragment, getSupportFragmen
 Activities: RadioButton, ImageButton, Intent, Bundle, onPause(), onResume(), SharedPreferences.Editor()  
 
 ## Lab08
-QuizGame: working...  
+QuizGame: xmlns:tools="http://schemas.android.com/tools", \<include layout="layout/*.xml">, \<merge>, res/anim/*.xml, overridePendingTransition(in,out), 

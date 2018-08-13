@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--merge代表這個最外層layout可以被省略 和父容器合併-->
+<!--xmlns:tools宣告tools這個name space用來當作預覽用的屬性 實際不執行-->
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <RadioButton
+            style="@style/radioAnswer"
+            android:id="@+id/radio_a"
+            android:onClick="clickAnswer"
+            tools:text="Answer A"/>
+
+        <RadioButton
+            style="@style/radioAnswer"
+            android:id="@+id/radio_b"
+            android:onClick="clickAnswer"
+            tools:text="Answer B"/>
+
+        <RadioButton
+            style="@style/radioAnswer"
+            android:id="@+id/radio_c"
+            android:onClick="clickAnswer"
+            tools:text="Answer C"/>
+
+    </RadioGroup>
+
+</merge>
