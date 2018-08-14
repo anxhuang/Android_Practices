@@ -16,8 +16,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="64dp"
-            android:text="問答小學堂"
+            android:text="Q"
+            android:textSize="200sp"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="希洽檢定考"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             />
         <LinearLayout
@@ -26,20 +35,19 @@
             android:layout_gravity="center">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/basicButton"
                 android:text="開新遊戲"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:background="@android:color/holo_green_light"
                 android:onClick="startNew"/>
 
             <Button
+                style="@style/basicButton"
                 android:id="@+id/btn_load"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:text="繼續進度"
+                android:background="@android:color/holo_blue_dark"
                 android:visibility="gone"
+                tools:visibility="visible"
                 android:onClick="loadGame"/>
 
         </LinearLayout>

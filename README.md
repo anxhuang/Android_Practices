@@ -20,7 +20,10 @@ CheckBox: CheckBox, StringBuilder, sb.delete(0, sb.length()), Math.max(0,int)
 Fragments: values/dimens, strings.xml, -hXXXdp-port, Fragment, getSupportFragmentManager(), View.OnClickListener  
 
 ## Lab07
-Activities: RadioButton, ImageButton, Intent, Bundle, onPause(), onResume(), SharedPreferences.Editor()  
+Activities: RadioButton, ImageButton, Intent, Bundle, onPause(), onResume(), SharedPreferences.Editor(), Log.d(TAG,"comment")  
 
 ## Lab08
-QuizGame: xmlns:tools="http://schemas.android.com/tools", \<include layout="layout/*.xml">, \<merge>, res/anim/*.xml, overridePendingTransition(in,out), 
+QuizGame: xmlns:tools="http://schemas.android.com/tools", \<include layout="layout/*.xml">, \<merge>, res/anim/*.xml, overridePendingTransition(in,out), <string-array>, Arrays.fill(), AlertDialog from Lab09  
+
+## Lab09
+Dialog: AlertDialog.Builder(), DialogInterface.OnClickListener, custom defined Listener, 

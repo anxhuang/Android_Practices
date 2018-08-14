@@ -34,12 +34,12 @@
         layout="@layout/answer_group"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/basicButton"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="24dp"
-        android:text="NEXT"
+        android:text="下一題"
+        android:background="@android:color/holo_purple"
         android:onClick="clickNext"/>
 
 

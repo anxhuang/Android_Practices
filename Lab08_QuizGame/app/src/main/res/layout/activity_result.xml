@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="您的作答記錄"
+            android:text="檢定考成績出爐"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
 
         <LinearLayout
@@ -28,20 +28,45 @@
 
             <TextView
                 style="@style/resultText"
-                android:id="@+id/no_list"
+                android:id="@+id/tv_no_list"
                 android:textColor="@android:color/holo_orange_dark"
-                />
+                android:lineHeight="33sp"
+                tools:text="No."/>
 
             <TextView
                 style="@style/resultText"
-                android:id="@+id/result_list"
+                android:id="@+id/tv_result_list"
                 android:textColor="@android:color/holo_blue_dark"
+                android:layout_marginLeft="16dp"
+                android:lineHeight="33sp"
+                tools:text="A\nB\nC\nB\nA"/>
+
+            <TextView
+                style="@style/resultText"
+                android:id="@+id/tv_feedback_list"
+                android:textColor="@android:color/holo_purple"
                 android:layout_marginLeft="32dp"
-                />
+                tools:text="回饋\n回饋\n回饋\n回饋\n回饋"/>
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/tv_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="-16dp"
+            android:textSize="60sp"
+            android:textColor="@android:color/holo_red_dark"
+            tools:text="分數"/>
 
+        <Button
+            style="@style/basicButton"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="回 首 頁"
+            android:background="@android:color/holo_green_dark"
+            android:onClick="goHome"/>
 
     </LinearLayout>
 

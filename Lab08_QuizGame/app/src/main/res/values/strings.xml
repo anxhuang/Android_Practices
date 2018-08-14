@@ -2,34 +2,34 @@
     <string name="app_name">Lab08_QuizGame</string>
     <string-array name="quiz_text">
         <item>哈利波特裡面的校長叫什麼名字？</item>
-        <item>雙龍出海？</item>
-        <item>無三不成禮？</item>
-        <item>四通八達？</item>
-        <item>五告喝加</item>
+        <item>X-MEN中金鋼狼的特殊能力為？</item>
+        <item>以下誰是公認的最強死神？</item>
+        <item>請選出用來形容腹黑的顏色？</item>
+        <item>收集七顆龍珠後可以做什麼？</item>
     </string-array>
     <string-array name="item_text_q1">
-            <item>A Q1答案A</item>
-            <item>B Q1答案B</item>
-            <item>C Q1答案C</item>
+            <item>A. 鄧不利多</item>
+            <item>B. 鄧不利少</item>
+            <item>C. 鄧不利不多不少剛剛好</item>
     </string-array>
     <string-array name="item_text_q2">
-            <item>A Q2答案A</item>
-            <item>B Q1答案B</item>
-            <item>C Q1答案C</item>
+            <item>A. 超級自白能力</item>
+            <item>B. 超級自癒能力</item>
+            <item>C. 超級自嘲能力</item>
     </string-array>
     <string-array name="item_text_q3">
-            <item>A Q3答案A</item>
-            <item>B Q1答案B</item>
-            <item>C Q1答案C</item>
+            <item>A. 黑崎一護</item>
+            <item>B. John wick</item>
+            <item>C. 江戶川柯南</item>
     </string-array>
     <string-array name="item_text_q4">
-            <item>A Q4答案A</item>
-            <item>B Q1答案B</item>
-            <item>C Q1答案C</item>
+            <item>A. 福利色</item>
+            <item>B. 粉紅色</item>
+            <item>C. 合作色</item>
     </string-array>
     <string-array name="item_text_q5">
-            <item>A Q5答案A</item>
-            <item>B Q1答案B</item>
-            <item>C Q1答案C</item>
+            <item>A. 和神龍討價還價</item>
+            <item>B. 讓蘭德爾泡烏龍茶</item>
+            <item>C. 炸完加蒜頭和蔥段</item>
     </string-array>
 </resources>

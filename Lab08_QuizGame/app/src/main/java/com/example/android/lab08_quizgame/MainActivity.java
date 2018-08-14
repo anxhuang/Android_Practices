@@ -1,7 +1,9 @@
 package com.example.android.lab08_quizgame;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +12,7 @@ import android.widget.Button;
 
 import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DialogInterface.OnClickListener{
 
     public static final String BUNDLE_KEY_CURRENT = "com.example.android.lab08_quizgame.current";
     public static final String BUNDLE_KEY_ANSWER = "com.example.android.lab08_quizgame.answer";
@@ -77,10 +79,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startNew(View view) {
-        current = 0;
-        Arrays.fill(answer,0);
-        doIntent();
+        //建立詢問對話框 由對話框的onClick來工作
+        new AlertDialog.Builder(this)
+                .setTitle("是否清除之前進度？")
+                .setMessage("遊戲進度一經清除即無法復原")
+                .setPositiveButton("認真",this)
+                .setNegativeButton("算了",this)
+                .show();
         Log.d(TAG,"startNew() current:"+current);
+    }
+
+    //startNew委託的Listener必須實作onClick() 這裡把重置遊戲的工作交給他
+    @Override
+    public void onClick(DialogInterface dialogInterface, int which_btn) {
+        switch (which_btn){
+            case DialogInterface.BUTTON_POSITIVE:
+                current = 0;
+                Arrays.fill(answer,0);
+                doIntent();
+                Log.d(TAG,"onClick() BUTTON_POSITIVE current:"+current);
+                break;
+            case DialogInterface.BUTTON_NEGATIVE:
+                Log.d(TAG,"onClick() BUTTON_NEGATIVE current:"+current);
+                break;
+        }
     }
 
     public void loadGame(View view) {
@@ -94,4 +116,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         overridePendingTransition(R.anim.right_bottom_in,R.anim.left_bottom_out);
     }
+
 }

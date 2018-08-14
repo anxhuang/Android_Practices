@@ -78,20 +78,21 @@ public class QuizActivity extends AppCompatActivity {
     public void clickNext(View view) {
         if (no < MainActivity.quiz.length-1){
             no += 1;
-            doIntent(QuizActivity.class);
+            doIntent(QuizActivity.class, R.anim.right_bottom_in, R.anim.left_bottom_out); //帶入bottom_in動畫
         }else {
-           doIntent(ResultActivity.class);
+            doIntent(ResultActivity.class, R.anim.right_bottom_in, R.anim.left_bottom_out);
         }
 
     }
 
-    public void doIntent(Class c){
+    //自訂傳入參數分別為: 目標activity, 進場動畫, 退出動畫
+    public void doIntent(Class c, int anim_in, int anim_out){
         Intent intent = getIntent();
         intent.setClass(this, c);
         intent.putExtra(MainActivity.BUNDLE_KEY_CURRENT, no);
         intent.putExtra(MainActivity.BUNDLE_KEY_ANSWER, mAnswer);
         startActivity(intent);
-        overridePendingTransition(R.anim.right_bottom_in,R.anim.left_bottom_out);
+        overridePendingTransition(anim_in,anim_out);
     }
 
     @Override
@@ -99,9 +100,9 @@ public class QuizActivity extends AppCompatActivity {
         super.onBackPressed();
         if (no > 0) {
             no -= 1;
-            doIntent(QuizActivity.class);
+            doIntent(QuizActivity.class, R.anim.left_push_in,R.anim.right_push_out); //帶入push_in動畫
         }else {
-            doIntent(MainActivity.class);
+            doIntent(MainActivity.class, R.anim.left_push_in,R.anim.right_push_out);
         }
     }
 }
