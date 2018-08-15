@@ -31,4 +31,44 @@
         android:textAllCaps="false"
         android:onClick="clickAlertDialogYesNo"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="AlertDialog YES-NO-CANCEL"
+        android:textAllCaps="false"
+        android:onClick="clickAlertDialogYesNoCancel"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="AlertDialog Items"
+        android:textAllCaps="false"
+        android:onClick="clickAlertDialogItems"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="AlertDialog MultiChoice"
+        android:textAllCaps="false"
+        android:onClick="clickAlertDialogMultiChoice"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="AlertDialog SingleChoice"
+        android:textAllCaps="false"
+        android:onClick="clickAlertDialogSingleChoice"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="MyDialogFragment"
+        android:textAllCaps="false"
+        android:onClick="clickMyDialogFragment"/>
+
 </LinearLayout>
