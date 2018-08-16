@@ -10,12 +10,16 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class QuizActivity extends AppCompatActivity {
 
     private static final String TAG="TAG-Quiz";
 
     private TextView tv_no;
     private TextView tv_quiz;
+    private TextView tv_bullet;
     private RadioButton radio_a;
     private RadioButton radio_b;
     private RadioButton radio_c;
@@ -23,6 +27,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private int no;
     private int[] mAnswer;
+    private StringBuilder mBullet = new StringBuilder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,7 @@ public class QuizActivity extends AppCompatActivity {
 
         tv_no = findViewById(R.id.tv_no);
         tv_quiz = findViewById(R.id.tv_quiz);
+        tv_bullet = findViewById(R.id.tv_bullet);
         radio_a = findViewById(R.id.radio_a);
         radio_b = findViewById(R.id.radio_b);
         radio_c = findViewById(R.id.radio_c);
@@ -48,6 +54,16 @@ public class QuizActivity extends AppCompatActivity {
 
         tv_no.setText(String.valueOf(no+1));
         tv_quiz.setText(MainActivity.quiz[no]);
+        //更新bullet bar
+        for(int i=0; i<mAnswer.length; i++) {
+            if(i != no){
+                mBullet.append(" ∙ ");
+            }else{
+                mBullet.append("・");
+            }
+        }
+        tv_bullet.setText(mBullet);
+
         radio_a.setText(MainActivity.item[no][0]);
         radio_b.setText(MainActivity.item[no][1]);
         radio_c.setText(MainActivity.item[no][2]);

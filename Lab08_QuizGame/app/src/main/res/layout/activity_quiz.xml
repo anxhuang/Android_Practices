@@ -26,6 +26,15 @@
         android:background="#DDD"
         tools:text="Quiz here"/>
 
+    <TextView
+        android:id="@+id/tv_bullet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="#DDD"
+        android:textSize="32sp"
+        tools:text="∙ ∙ ・ ∙ ∙"/>
+
     <!--使用在多個畫面但有相同layout時-->
     <include
         android:id="@+id/answer_group"

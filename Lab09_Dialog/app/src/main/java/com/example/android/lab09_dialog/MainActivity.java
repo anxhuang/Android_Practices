@@ -176,12 +176,12 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
     //implement自訂的MyDialogInterface後必須要實作的兩個按鈕 (從fragment裡callback)
     @Override
-    public void myDialogOk(CharSequence user) {
+    public void myDialogOk(CharSequence user) { //Fragment callback (由Fragment呼叫)
         m_tv_message.setText(user);
     }
 
     @Override
-    public void myDialogCancel() {
+    public void myDialogCancel() { //Fragment callback (由Fragment呼叫)
         m_tv_message.setText("忘記登入資訊了嗎？");
     }
 

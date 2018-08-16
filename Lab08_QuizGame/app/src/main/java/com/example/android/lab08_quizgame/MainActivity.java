@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
     private static int[] answer=new int[quiz_qty]; //玩家作答
 
+    private boolean isDialog=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +62,9 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         for(int i=0; i<answer.length; i++) {
             answer[i]=prefs.getInt("save_"+i,0);
             if (answer[i] != 0){
-                //有進度才出現
+                //允許詢問對話框
+                isDialog=true;
+                //有進度才出現"繼續進度"按鈕
                 Button btn_load = findViewById(R.id.btn_load);
                 btn_load.setVisibility(View.VISIBLE);
             }
@@ -79,14 +83,18 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     public void startNew(View view) {
-        //建立詢問對話框 由對話框的onClick來工作
-        new AlertDialog.Builder(this)
-                .setTitle("是否清除之前進度？")
-                .setMessage("遊戲進度一經清除即無法復原")
-                .setPositiveButton("認真",this)
-                .setNegativeButton("算了",this)
-                .show();
-        Log.d(TAG,"startNew() current:"+current);
+        if(isDialog) {
+            //建立詢問對話框 由對話框的onClick來工作
+            new AlertDialog.Builder(this)
+                    .setTitle("是否清除之前進度？")
+                    .setMessage("遊戲進度一經清除即無法復原")
+                    .setPositiveButton("認真", this)
+                    .setNegativeButton("算了", this)
+                    .show();
+            Log.d(TAG, "startNew() current:" + current);
+        }else{
+            initGame();
+        }
     }
 
     //startNew委託的Listener必須實作onClick() 這裡把重置遊戲的工作交給他
@@ -94,15 +102,19 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     public void onClick(DialogInterface dialogInterface, int which_btn) {
         switch (which_btn){
             case DialogInterface.BUTTON_POSITIVE:
-                current = 0;
-                Arrays.fill(answer,0);
-                doIntent();
+                initGame();
                 Log.d(TAG,"onClick() BUTTON_POSITIVE current:"+current);
                 break;
             case DialogInterface.BUTTON_NEGATIVE:
                 Log.d(TAG,"onClick() BUTTON_NEGATIVE current:"+current);
                 break;
         }
+    }
+
+    public void initGame(){
+        current = 0;
+        Arrays.fill(answer,0);
+        doIntent();
     }
 
     public void loadGame(View view) {

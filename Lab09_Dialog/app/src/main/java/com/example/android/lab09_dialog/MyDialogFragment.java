@@ -66,6 +66,8 @@ public class MyDialogFragment extends DialogFragment {
                         if(getActivity() instanceof MyDialogInterface){ //要判斷目前的對象Activity是否有實作我們自訂的interface
                             MyDialogInterface x = (MyDialogInterface)getActivity(); //先幫他轉型讓他可以遙控interface的功能
                             x.myDialogCancel();
+                        }else{
+                            throw new RuntimeException("Activity沒有實作MyDialogInterface");
                         }
                     }
                 }); //不用show() 要在return回傳create()建立的Dialog
