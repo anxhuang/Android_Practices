@@ -30,12 +30,12 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        /*
+        //
         Intent intent = getIntent();
-        intent.putExtra(BUNDLE_KEY_INT_ITEM_IMAGE,MyListAdapter.drawableIDs[i]);
-        setResult(RESULT_OK);
-        */
-        Log.d("TAG ListActivity","第"+i+"項 被點選了");
+        intent.putExtra(BUNDLE_KEY_INT_ITEM_IMAGE,i);
+        setResult(RESULT_OK,intent);
+        //
+        Log.d("TAG-ListActivity","第"+i+"項 被點選了");
         finish(); //返回前一畫面
     }
 }
