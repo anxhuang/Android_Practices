@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private TypedArray mNbaLogos; //資源檔 陣列
     private String[] mNbaTeams; //隊名 陣列
     private int mNbaLogosCount; //一共有多少張圖
+    private boolean mNbaBtnSw=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,13 +103,23 @@ public class MainActivity extends AppCompatActivity {
 
     Runnable mStartRandomTask = new StartRandomTask(); //因為要讓StopRandomTask來中斷所以要寫在class scope
     Runnable mStopRandomTask = new StopRandomTask();
+    Runnable mCountDown = new CountDown();
+    private int countDownTime = 3000;
 
     public void go(View view) {
 
-        boolean resultStart = m_handler.post(mStartRandomTask); //立刻執行任務 隨機換圖
-        boolean resultStop = m_handler.postDelayed(mStopRandomTask, 3000); //3秒後停止任務 隨機換圖
-        m_tv_nba_message.setText((resultStart && resultStop ? "換圖任務交付" : "換圖交付失敗"));
-        m_btn_go.setEnabled(false);
+        if(mNbaBtnSw) {
+            boolean resultStart = m_handler.post(mStartRandomTask); //立刻執行任務 隨機換圖
+            m_tv_nba_message.setText((resultStart ? "換圖任務交付成功" : "換圖任務交付失敗"));
+            mNbaBtnSw = false;
+            m_btn_go.setText("Stop");
+        }else {
+            boolean resultCountDown = m_handler.post(mCountDown); //開始倒數
+            boolean resultStop = m_handler.postDelayed(mStopRandomTask, countDownTime); //3秒後停止任務 隨機換圖
+            m_tv_nba_message.setText((resultStop && resultCountDown ? "換圖任務停止成功" : "換圖任務停止失敗"));
+            mNbaBtnSw = true;
+            m_btn_go.setText("Go");
+        }
 
     }
 
@@ -116,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void run() {
-            int idx = (int)(Math.random()*(mNbaLogosCount)); //Math.random會產生 0~1之間的Double
+            int idx = (int)(Math.random()*(mNbaLogosCount)); //Math.random()會產生 0~0.999999...之間的Double
             m_v_nba_logo.setBackground(mNbaLogos.getDrawable(idx));
             m_tv_nba_team.setText(mNbaTeams[idx]);
             m_handler.postDelayed(this, 50); //this是StartRandomTask物件自己
@@ -127,9 +138,20 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void run() {
-            m_handler.removeCallbacks(mStartRandomTask); //
+            m_handler.removeCallbacks(mStartRandomTask); //停止隨機換圖的任務
+            m_handler.removeCallbacks(mCountDown); //停止隨機換圖的任務
             m_tv_nba_message.setText("時間到");
-            m_btn_go.setEnabled(true);
+            countDownTime = 3000;
+        }
+    }
+
+    public class CountDown implements Runnable{
+
+        @Override
+        public void run() {
+            countDownTime -= 50;
+            m_tv_nba_message.setText(String.format("%.2f",(float)countDownTime/1000));
+            m_handler.postDelayed(this, 50);
         }
     }
 

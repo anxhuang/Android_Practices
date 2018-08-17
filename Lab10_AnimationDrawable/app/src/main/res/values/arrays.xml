@@ -15,17 +15,17 @@
         <item>@drawable/nba_logo_warriors</item>
     </array>
     <string-array name="nba_teams">
-        <item>Knicks</item>
-        <item>Magic</item>
-        <item>Pistons</item>
-        <item>Spurs</item>
-        <item>Nets</item>
-        <item>Clippers</item>
-        <item>76ers</item>
-        <item>Suns</item>
-        <item>Hornets</item>
-        <item>Raptors</item>
-        <item>Lakers</item>
-        <item>Warriors</item>
+        <item>New York Knicks</item>
+        <item>Orlando Magic</item>
+        <item>Indiana Pistons</item>
+        <item>San Antonio Spurs</item>
+        <item>Brooklyn Nets</item>
+        <item>Los Angeles Clippers</item>
+        <item>Philadelphia 76ers</item>
+        <item>Phoenix Suns</item>
+        <item>Charlotte Hornets</item>
+        <item>Toronto Raptors</item>
+        <item>Los Angeles Lakers</item>
+        <item>Golden State Warriors</item>
     </string-array>
 </resources>
