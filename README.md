@@ -26,4 +26,10 @@ Activities: RadioButton, ImageButton, Intent, Bundle, onPause(), onResume(), Sha
 QuizGame: xmlns:tools="http://schemas.android.com/tools", \<include layout="layout/*.xml">, \<merge>, res/anim/*.xml, overridePendingTransition(in,out), <string-array>, Arrays.fill(), AlertDialog from Lab09  
 
 ## Lab09
-Dialog: AlertDialog.Builder(), DialogInterface.OnClickListener, custom defined Listener, 
+Dialog: AlertDialog.Builder(), DialogInterface.OnClickListener, custom defined Listener, Items, MultiChoiceItems, SingleChoiceItems, custom DialogFragment with build-in Interface, LayoutInflater, callback  
+
+## Lab10
+Thread Animation: values/arrays, .obtainTypedArray(), AnimationDrawable, .start(), .stop(), Handler.postDelayed(Runnable, delayMillis), .removeCallbacks(Runnable), Button.setEnabled(bool)  
+
+## Lab11
+ListView: FloatingActionButton, ListView.setEmptyView(view), .setAdapter, BaseAdapter, getCount(), getView()  

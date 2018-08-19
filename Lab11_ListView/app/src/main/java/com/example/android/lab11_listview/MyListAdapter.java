@@ -23,7 +23,7 @@ public class MyListAdapter extends BaseAdapter { //BaseAdapter是抽象類別 �
     }
 
     @Override
-    public int getCount() { //ListView會主動執行這個 如果回傳0表示沒有資料
+    public int getCount() { //ListView.setEmptyView()會主動執行這個 如果回傳0表示沒有資料
         return 20; //要和自訂的項目數量相同
     }
 
@@ -38,9 +38,9 @@ public class MyListAdapter extends BaseAdapter { //BaseAdapter是抽象類別 �
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int i, View view, ViewGroup viewGroup) { //系統會自動呼叫這個方法 一個個產生新item
         //跟Activity借打氣筒 將layout灌入view
-        View v = activity.getLayoutInflater().inflate(R.layout.listview_layout,null);
+        View v = activity.getLayoutInflater().inflate(R.layout.itemview_layout,null); //每個單位item的view
         //View產生了再來找TextView和ImageView
         TextView tvItemId = v.findViewById(R.id.itemId);
         tvItemId.setText(String.valueOf(i));
@@ -48,6 +48,6 @@ public class MyListAdapter extends BaseAdapter { //BaseAdapter是抽象類別 �
         ImageView ivItemImage = v.findViewById(R.id.itemImage);
         ivItemImage.setImageResource(drawableIDs[i]);
 
-        return v; //要把view回傳給呼叫這個方法的變數
+        return v; //要把view回傳給系統幫我們管理
     }
 }

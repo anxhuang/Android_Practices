@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
                                 sb.append(items[j]).append("\n");
                             }
                         }
+                        sb.setLength(sb.length() - 2 ); //去掉最後一個\n
                         m_tv_message.setText(sb);
                     }
                 })
@@ -146,6 +147,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         mChoice = 1; //將預設選項設為第1項
 
         new AlertDialog.Builder(this)
+                .setTitle("你好帥喔")
                 .setSingleChoiceItems(items, mChoice, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) { //這裡的i是Radio鈕 <= 重點要這個

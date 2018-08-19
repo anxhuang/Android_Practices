@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class ListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{ //要讓Adapter的Item可以點選要實作這個介面
@@ -29,7 +30,7 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) { //哪一個AdapterView被按就傳入該AdapterView
         //
         Intent intent = getIntent();
         intent.putExtra(BUNDLE_KEY_INT_ITEM_IMAGE,i);

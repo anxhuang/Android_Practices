@@ -99,27 +99,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //以下為NBA隨機換圖功能的部分
+    //以下為NBA隨機換圖功能的部分　
 
     Runnable mStartRandomTask = new StartRandomTask(); //因為要讓StopRandomTask來中斷所以要寫在class scope
     Runnable mStopRandomTask = new StopRandomTask();
     Runnable mCountDown = new CountDown();
-    private int countDownTime = 3000;
+    private int countDownTime = 3000; //結束前倒數3秒
 
     public void go(View view) {
 
         if(mNbaBtnSw) {
-            boolean resultStart = m_handler.post(mStartRandomTask); //立刻執行任務 隨機換圖
+            boolean resultStart = m_handler.post(mStartRandomTask); //立刻執行"隨機換圖任務"
             m_tv_nba_message.setText((resultStart ? "換圖任務交付成功" : "換圖任務交付失敗"));
-            mNbaBtnSw = false;
             m_btn_go.setText("Stop");
         }else {
-            boolean resultCountDown = m_handler.post(mCountDown); //開始倒數
-            boolean resultStop = m_handler.postDelayed(mStopRandomTask, countDownTime); //3秒後停止任務 隨機換圖
-            m_tv_nba_message.setText((resultStop && resultCountDown ? "換圖任務停止成功" : "換圖任務停止失敗"));
-            mNbaBtnSw = true;
-            m_btn_go.setText("Go");
+            m_handler.post(mCountDown); //立刻開始倒數
+            m_btn_go.setText("CountDown");
+            m_btn_go.setEnabled(false); //倒數中禁止按下，避免重複觸發
         }
+        mNbaBtnSw = !mNbaBtnSw; //按鈕狀態切換
 
     }
 
@@ -134,25 +132,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public class StopRandomTask implements Runnable{
-
-        @Override
-        public void run() {
-            m_handler.removeCallbacks(mStartRandomTask); //停止隨機換圖的任務
-            m_handler.removeCallbacks(mCountDown); //停止隨機換圖的任務
-            m_tv_nba_message.setText("時間到");
-            countDownTime = 3000;
-        }
-    }
-
     public class CountDown implements Runnable{
 
         @Override
         public void run() {
-            countDownTime -= 50;
-            m_tv_nba_message.setText(String.format("%.2f",(float)countDownTime/1000));
-            m_handler.postDelayed(this, 50);
+            countDownTime -= 100;
+            if(countDownTime > 0) {
+                m_tv_nba_message.setText(String.format("%.2f", (float) countDownTime / 1000));
+                m_handler.postDelayed(this, 100);
+            }else {
+                m_handler.post(mStopRandomTask); //跳出CountDown並執行"停止換圖任務"
+            }
         }
     }
 
+    public class StopRandomTask implements Runnable{
+
+        @Override
+        public void run() {
+            m_handler.removeCallbacks(mStartRandomTask); //停止"隨機換圖任務"
+            m_tv_nba_message.setText("時間到");
+            m_btn_go.setText("Go");
+            m_btn_go.setEnabled(true); //重新允許按下
+            countDownTime = 3000; //重置倒數時間
+        }
+    }
 }

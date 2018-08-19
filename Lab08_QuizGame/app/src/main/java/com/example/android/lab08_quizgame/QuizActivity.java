@@ -55,11 +55,12 @@ public class QuizActivity extends AppCompatActivity {
         tv_no.setText(String.valueOf(no+1));
         tv_quiz.setText(MainActivity.quiz[no]);
         //更新bullet bar
+        mBullet.delete(0,mBullet.length());
         for(int i=0; i<mAnswer.length; i++) {
             if(i != no){
-                mBullet.append(" ∙ ");
+                mBullet.append(" ・ ");
             }else{
-                mBullet.append("・");
+                mBullet.append(" ● ");
             }
         }
         tv_bullet.setText(mBullet);
