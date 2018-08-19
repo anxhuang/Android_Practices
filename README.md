@@ -1,7 +1,7 @@
 # Android Practices
 
 Language: Java 1.7.0  
-Tools: Android Studio (macOS/Windows)  
+Tools: Android Studio 3.1 (macOS/Windows)  
 Usage: Import as a project with each individual folders  
 
 ## Lab01
