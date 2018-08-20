@@ -2,15 +2,27 @@ package com.example.android.lab11_listview;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private  final int requestAddPokemon = 1;
+
+    private ListView mainListView;
+    private MainListAdapter mainAdapter;
+    /*
+    private String mItemID;
+    private String mItemName;
+    private  int mItemResID;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +42,35 @@ public class MainActivity extends AppCompatActivity {
                 */
 
                 Intent intent = new Intent(MainActivity.this, AddActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, requestAddPokemon);
 
             }
         });
+
+        initListView();
+    }
+
+    private void initListView() {
+        mainAdapter = new MainListAdapter(this, List<Pokemon>);
+        mainListView = findViewById(R.id.listview);
+        mainListView.setEmptyView(findViewById(R.id.empty));
+        mainListView.setAdapter(mainAdapter);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            switch (requestCode){
+                case requestAddPokemon:
+                    /*
+                    Log.d("TAG-MainActivity-Result", "mItemID:"+mItemID+" mItemName:"+mItemName+" mItemResId:"+mItemResID);
+                    */
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     @Override
