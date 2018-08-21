@@ -1,6 +1,7 @@
 package com.example.android.lab11_listview;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -13,16 +14,19 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class MainActivity extends AppCompatActivity {
 
-    private  final int requestAddPokemon = 1;
+    private static final int requestAddPokemon = 1;
 
     private ListView mainListView;
     private MainListAdapter mainAdapter;
-    /*
-    private String mItemID;
-    private String mItemName;
-    private  int mItemResID;*/
+    private List<Pokemon> list = new ArrayList();
+    private Pokemon newPokemon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initListView() {
-        mainAdapter = new MainListAdapter(this, List<Pokemon>);
+        mainAdapter = new MainListAdapter(this, list);
         mainListView = findViewById(R.id.listview);
         mainListView.setEmptyView(findViewById(R.id.empty));
         mainListView.setAdapter(mainAdapter);
@@ -63,9 +67,10 @@ public class MainActivity extends AppCompatActivity {
         if(resultCode == RESULT_OK){
             switch (requestCode){
                 case requestAddPokemon:
-                    /*
-                    Log.d("TAG-MainActivity-Result", "mItemID:"+mItemID+" mItemName:"+mItemName+" mItemResId:"+mItemResID);
-                    */
+                    newPokemon = (Pokemon) data.getSerializableExtra(AddActivity.BUNDLE_KEY_POKEMON); //序列化的資料要用這個get
+                    list.add(newPokemon);
+                    mainAdapter.notifyDataSetChanged(); //通知ListView資料發生異動需要更新
+                    Log.d("TAG-MainActivity-Result","in AddPokemon");
                     break;
                 default:
                     break;

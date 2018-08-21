@@ -64,20 +64,23 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:textColor="@android:color/white"
-            android:text="取消"/>
+            android:text="取消"
+            android:onClick="click"/>
 
         <Button
+            android:id="@+id/btn_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
             android:background="@color/colorPrimary"
             android:textColor="@android:color/white"
             android:text="完成"
-            android:onClick="addItem"/>
+            android:onClick="click"/>
 
     </LinearLayout>
 

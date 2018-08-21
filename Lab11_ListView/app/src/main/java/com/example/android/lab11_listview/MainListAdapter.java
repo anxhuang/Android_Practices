@@ -14,7 +14,7 @@ public class MainListAdapter extends BaseAdapter {
     private Activity activity;
     private List<Pokemon> list;
 
-    public MainListAdapter(Activity activity, List<Pokemon> list) {
+    public MainListAdapter(Activity activity, List<Pokemon> list) { //要求使用這個Adapter的對象提供一個Pokemon陣列
         this.activity = activity;
         this.list = list;
     }
@@ -41,8 +41,8 @@ public class MainListAdapter extends BaseAdapter {
         TextView tv_ItemName = v.findViewById(R.id.itemName);
         ImageView iv_ItemImage = v.findViewById(R.id.itemImage);
 
-        Pokemon pkm = list.get(i);
-        tv_ItemID.setText(pkm.getId());
+        Pokemon pkm = list.get(i); //根據i取出目前要的第i個Pokemon的
+        tv_ItemID.setText(pkm.getId()); //透過get跟他要這些基本資料
         tv_ItemName.setText(pkm.getName());
         iv_ItemImage.setImageResource(pkm.getDrawableId());
 

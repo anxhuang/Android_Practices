@@ -9,14 +9,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import java.io.Serializable;
+
 public class AddActivity extends AppCompatActivity {
 
-    /*
-    static final String BUNDLE_KEY_STRING_ET_ID = "com.example.android.lab11_listview.et_id";
-    static final String BUNDLE_KEY_STRING_ET_NAME = "com.example.android.lab11_listview.et_name";
-    */
+    static final String BUNDLE_KEY_POKEMON = "com.example.android.lab11_listview.pokemon";
 
-    private final int requestPickImage = 0;
+    private static final int requestPickImage = 0;
 
     private EditText mEtId;
     private EditText mEtName;
@@ -63,13 +62,18 @@ public class AddActivity extends AppCompatActivity {
         Log.d("TAG-onActivityResult","imgId:"+ resId +" KEY:"+ListActivity.BUNDLE_KEY_INT_ITEM_IMAGE);
     }
 
-    public void addItem(View view) {
-
-        Pokemon pkm = new Pokemon(mEtId.getText().toString(), mEtName.getText().toString(), resId);
-
-        Intent intent = getIntent();
-        intent.put???
-        setResult(RESULT_OK);
+    public void click(View view) {
+        switch (view.getId()){
+            case R.id.btn_ok:
+                Pokemon pkm = new Pokemon(mEtId.getText().toString(), mEtName.getText().toString(), resId); //建立一個實體傳回去Main
+                Intent intent = getIntent();
+                intent.putExtra(BUNDLE_KEY_POKEMON, pkm); //把實體交給intent
+                setResult(RESULT_OK, intent); //!!! 不要忘記 要把intent放進去Result
+                break;
+            case R.id.btn_cancel:
+                setResult(RESULT_CANCELED);
+                break;
+        }
         finish();
     }
 }

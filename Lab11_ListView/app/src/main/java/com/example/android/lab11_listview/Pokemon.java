@@ -1,6 +1,9 @@
 package com.example.android.lab11_listview;
 
-public class Pokemon {
+import java.io.Serializable;
+
+public class Pokemon implements Serializable{ //要用intent傳遞要實作這個序列化
+
     private String id;
     private String name;
     private int drawableId;
@@ -22,4 +25,5 @@ public class Pokemon {
     public int getDrawableId() {
         return drawableId;
     }
+
 }
