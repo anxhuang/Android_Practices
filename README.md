@@ -32,4 +32,5 @@ Dialog: AlertDialog.Builder(), DialogInterface.OnClickListener, custom defined L
 Thread Animation: values/arrays, .obtainTypedArray(), AnimationDrawable, .start(), .stop(), Handler.postDelayed(Runnable, delayMillis), .removeCallbacks(Runnable), Button.setEnabled(bool)  
 
 ## Lab11
-ListView: FloatingActionButton, ListView.setEmptyView(view), .setAdapter, BaseAdapter, getCount(), getView()  
+ListView: FloatingActionButton, ListView.setEmptyView(view), .setAdapter, BaseAdapter, getCount(), getView(), onItemClick(), custom ArrayList<Model>, Model implements Serializable, .getSerializableExtra(), Adapter.notifyDataSetChanged()  
+
