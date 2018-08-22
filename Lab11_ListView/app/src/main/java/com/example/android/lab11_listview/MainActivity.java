@@ -1,10 +1,13 @@
 package com.example.android.lab11_listview;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -19,14 +22,18 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
+
+    static final String BUNDLE_KEY_UPDATE_POKEMON = "com.example.android.lab11_listview.update_pokemon";
 
     private static final int requestAddPokemon = 1;
+    private static final int requestUpdatePokemon = 2;
 
     private ListView mainListView;
     private MainListAdapter mainAdapter;
     private List<Pokemon> list = new ArrayList();
     private Pokemon newPokemon;
+    private int mItemIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         mainListView = findViewById(R.id.listview);
         mainListView.setEmptyView(findViewById(R.id.empty));
         mainListView.setAdapter(mainAdapter);
+        mainListView.setOnItemClickListener(this);
     }
 
     @Override
@@ -67,10 +75,16 @@ public class MainActivity extends AppCompatActivity {
         if(resultCode == RESULT_OK){
             switch (requestCode){
                 case requestAddPokemon:
-                    newPokemon = (Pokemon) data.getSerializableExtra(AddActivity.BUNDLE_KEY_POKEMON); //序列化的資料要用這個get
+                    newPokemon = (Pokemon) data.getSerializableExtra(AddActivity.BUNDLE_KEY_ADD_POKEMON); //序列化的資料要用這個get
                     list.add(newPokemon);
                     mainAdapter.notifyDataSetChanged(); //通知ListView資料發生異動需要更新
                     Log.d("TAG-MainActivity-Result","in AddPokemon");
+                    break;
+                case requestUpdatePokemon:
+                    newPokemon = (Pokemon) data.getSerializableExtra(BUNDLE_KEY_UPDATE_POKEMON);
+                    list.set(mItemIndex, newPokemon); //將list中的第mItemIndex項設定為更新後的Pokemon
+                    mainAdapter.notifyDataSetChanged();
+                    Log.d("TAG-MainActivity-Result","in UpdatePokemon");
                     break;
                 default:
                     break;
@@ -98,5 +112,36 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, final int index, long l) { //將i改為index 要設成final才讀得到
+        mItemIndex = index;
+        Log.d("TAG-onItemClick","第"+index+"項被點選了");
+
+        new AlertDialog.Builder(this)
+                .setMessage("請選擇動作")
+                .setPositiveButton("修改", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(MainActivity.this, UpdateActivity.class); //匿名函數內呼叫this要前綴類別名稱
+                        intent.putExtra(BUNDLE_KEY_UPDATE_POKEMON, list.get(index)); //用list.get(index)取得點選的Pokemon
+                        startActivityForResult(intent,requestUpdatePokemon);
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //do nothing
+                    }
+                })
+                .setNeutralButton("刪除", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        list.remove(index); //index要設成final才讀得到
+                        mainAdapter.notifyDataSetChanged();
+                    }
+                }).show();
+
     }
 }
