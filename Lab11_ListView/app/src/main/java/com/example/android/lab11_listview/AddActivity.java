@@ -8,28 +8,42 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-
-import java.io.Serializable;
+import android.widget.ImageButton;
 
 public class AddActivity extends AppCompatActivity {
 
-    static final String BUNDLE_KEY_ADD_POKEMON = "com.example.android.lab11_listview.add_pokemon";
+    private final String TAG = "TAG-"+this.getClass().getSimpleName();
 
-    private static final int requestPickImage = 0;
+    static final String BUNDLE_KEY_ADD_POKEMON = "com.example.android.lab11_listview.add_pokemon";
+    static final String BUNDLE_KEY_ADD_STATE = "com.example.android.lab11_listview.add_state";
+
+    private final int requestPickImage = 0;
 
     protected EditText mEtId; //因為要給子類別UpdateActivity使用 所以都宣告為protected
     protected EditText mEtName;
-    protected ImageView mIb;
+    protected ImageButton mIb;
     protected int resId;
     protected Button mBtn_ok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG," in onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
         initView();
+
+        //復原savedInstanceState要在找完View後復原
+        if(savedInstanceState != null){
+            Pokemon pkmld = (Pokemon) savedInstanceState.getSerializable(BUNDLE_KEY_ADD_STATE);
+            mEtId.setText(pkmld.getId());
+            mEtName.setText(pkmld.getName());
+            resId = pkmld.getDrawableId();
+            if(resId != R.drawable.no_image_box){
+                mIb.setImageResource(resId);
+                enable_mBtn_ok();
+            }
+        }
     }
 
     private void initView() {
@@ -40,9 +54,14 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public void pickImage(View view) {
-        Intent intent = getIntent();
-        intent.setClass(this, ListActivity.class);
+        Log.d(TAG, "click pickImage Button");
+        Intent intent = new Intent(this, ListActivity.class); // !!!因為有要Result一定要new 混用會頁面錯亂
         startActivityForResult(intent,requestPickImage);
+    }
+
+    protected void enable_mBtn_ok(){
+        mBtn_ok.setEnabled(true); //按鈕恢復可按
+        mBtn_ok.setBackgroundColor(getResources().getColor(R.color.colorPrimary));  //復原按鈕背景色
     }
 
     @Override
@@ -55,8 +74,7 @@ public class AddActivity extends AppCompatActivity {
                     resId = data.getIntExtra(ListActivity.BUNDLE_KEY_INT_ITEM_IMAGE, -1); //略過bundle的取法
                     if (resId != -1){ //避免錯誤產生要加判斷
                         mIb.setImageResource(resId);
-                        mBtn_ok.setEnabled(true); //按鈕恢復可按
-                        mBtn_ok.setBackgroundColor(getResources().getColor(R.color.colorPrimary));  //復原按鈕背景色
+                        enable_mBtn_ok();
                     }
                     break;
                 default:
@@ -64,10 +82,11 @@ public class AddActivity extends AppCompatActivity {
             }
         }
         //
-        Log.d("TAG-onActivityResult","imgId:"+ resId +" KEY:"+ListActivity.BUNDLE_KEY_INT_ITEM_IMAGE);
+        Log.d(TAG,"onActivityResult imgId:"+ resId);
     }
 
     public void click(View view) {
+        Log.d(TAG,"onClick view.getId:"+ view.getId());
         switch (view.getId()){
             case R.id.btn_ok:
                 Pokemon pkm = new Pokemon(mEtId.getText().toString(), mEtName.getText().toString(), resId); //建立一個實體傳回去Main
@@ -81,4 +100,13 @@ public class AddActivity extends AppCompatActivity {
         }
         finish();
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        Log.d(TAG,"onSaveInstanceState ");
+        super.onSaveInstanceState(outState);
+        Pokemon pkmsv = new Pokemon(mEtId.getText().toString(), mEtName.getText().toString(), resId);
+        outState.putSerializable(BUNDLE_KEY_ADD_STATE, pkmsv);
+    }
+
 }

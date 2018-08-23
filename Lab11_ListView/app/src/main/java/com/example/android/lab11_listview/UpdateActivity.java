@@ -7,6 +7,8 @@ import android.view.View;
 
 public class UpdateActivity extends AddActivity {
 
+    private final String TAG = "TAG-"+this.getClass().getSimpleName();
+
     private Pokemon pkm;
 
     @Override
@@ -14,7 +16,7 @@ public class UpdateActivity extends AddActivity {
         super.onCreate(savedInstanceState);
 
         init();
-        Log.d("TAG-onCreate()","after init()");
+        Log.d(TAG,"onCreate after init()");
     }
 
     private void init(){
@@ -24,9 +26,8 @@ public class UpdateActivity extends AddActivity {
         mEtName.setText(pkm.getName());
         resId = pkm.getDrawableId();//因為Add是由resId在記錄圖片id 要避免沒有重選圖的情況 所以先給他
         mIb.setImageResource(resId);
-        mBtn_ok.setEnabled(true); //不用重選圖就可以按
-        mBtn_ok.setBackgroundColor(getResources().getColor(R.color.colorPrimary)); //設定按鈕色
-        Log.d("TAG-init()","pkm.getId()="+pkm.getId());
+        enable_mBtn_ok(); //不用重選圖就可以按
+        Log.d(TAG,"init() pkm.getId()="+pkm.getId());
     }
 
     @Override

@@ -10,6 +10,8 @@ import android.widget.ListView;
 
 public class ListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{ //要讓Adapter的Item可以點選要實作這個介面
 
+    private final String TAG = "TAG-"+this.getClass().getSimpleName();
+
     static String BUNDLE_KEY_INT_ITEM_IMAGE = "com.example.android.lab11_listview.itemImage";
 
     private ListView mListView;
@@ -21,6 +23,7 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_list);
 
         initListView();
+        Log.d(TAG," after onCreate");
     }
 
     private void initListView() {
@@ -40,7 +43,7 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra(BUNDLE_KEY_INT_ITEM_IMAGE,drawableIDs[i]);
         setResult(RESULT_OK,intent);
         //
-        Log.d("TAG-ListActivity","第"+i+"項 被點選了 drawableIDs[i]:"+drawableIDs[i]);
+        Log.d(TAG,"第"+i+"項 被點選了 drawableIDs[i]:"+drawableIDs[i]);
         finish(); //返回前一畫面
     }
 }
