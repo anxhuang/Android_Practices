@@ -1,6 +1,5 @@
 package com.example.android.lab11_listview;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +21,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
@@ -54,8 +52,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             e.printStackTrace();
         }finally {
             try {
-                oos.close();
+                if (oos != null) {
+                    oos.close(); //如果沒檔案就會是null 所以要加if
+                }
             }catch (IOException e){
+                Log.d(TAG, e.toString());
                 e.printStackTrace();
             }
         }
@@ -74,8 +75,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             e.printStackTrace();
         }finally {
             try {
-                ois.close();
+                if(ois != null) {
+                    ois.close();
+                }
             }catch (IOException e){
+                Log.d(TAG, e.toString());
                 e.printStackTrace();
             }
         }
