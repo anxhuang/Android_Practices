@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="title_array">
+        <item>cappuccino</item>
+        <item>latte</item>
+        <item>macchiato</item>
+        <item>mocha</item>
+    </string-array>
+    <array name="drawable_array">
+        <item>@drawable/coffee_cappuccino</item>
+        <item>@drawable/coffee_latte</item>
+        <item>@drawable/coffee_macchiato</item>
+        <item>@drawable/coffee_mocha</item>
+    </array>
+</resources>
