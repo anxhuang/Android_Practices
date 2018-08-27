@@ -9,11 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements MyDialogFragment.MyDialogInterface{
 
     private final String TAG = "TAG-"+this.getClass().getSimpleName();
+
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements MyDialogFragment.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,13 +60,14 @@ public class MainActivity extends AppCompatActivity implements MyDialogFragment.
     }
 
     @Override
-    public void onClickOk(String title) {
-        TextView hello = findViewById(R.id.hello_world);
-        hello.setText(title);
+    public void onClickOk(Coffee coffee) {
+        Snackbar.make(fab, "收到確定 coffee = "+coffee, Snackbar.LENGTH_SHORT)
+                .setAction("Action", null).show();
     }
 
     @Override
     public void onClickCancel() {
-
+        Snackbar.make(fab, "收到取消", Snackbar.LENGTH_SHORT)
+                .setAction("Action", null).show();
     }
 }
