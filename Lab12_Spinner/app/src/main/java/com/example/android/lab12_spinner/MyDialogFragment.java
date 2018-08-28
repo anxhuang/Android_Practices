@@ -15,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 
 
 /**
@@ -28,7 +27,7 @@ public class MyDialogFragment extends DialogFragment {
     private MyDialogInterface myDialogHandler;
     private View mView;
     private Spinner mSpinner;
-    private SpinnerAdapter mAdapter;
+    private MySpinnerAdapter mSpinnerAdapter;
     private AlertDialog mDialog;
 
     interface MyDialogInterface{
@@ -75,8 +74,8 @@ public class MyDialogFragment extends DialogFragment {
     private void initSpinner() {
         //設定SpinnerAdapter
         mSpinner = mView.findViewById(R.id.coffee_spinner);
-        mAdapter = new MySpinnerAdapter(getActivity());
-        mSpinner.setAdapter(mAdapter);
+        mSpinnerAdapter = new MySpinnerAdapter(getActivity());
+        mSpinner.setAdapter(mSpinnerAdapter);
         //mSpinner.setOnItemSelectedListener(this); *****沒用先暫時拿掉*****
         //mSpinner.setSelection(0);//預設選擇第0項 可不寫
     }
@@ -108,17 +107,21 @@ public class MyDialogFragment extends DialogFragment {
         //目前選到哪一個
         int i = mSpinner.getSelectedItemPosition();
         //咖啡名稱
-        TypedArray title_array = getResources().obtainTypedArray(R.array.title_array);
+        TypedArray title_array = mSpinnerAdapter.getTitle_array();
         String title = title_array.getText(i).toString();
         //咖啡價格
         EditText et_price = mView.findViewById(R.id.coffee_price);
-        int price = Integer.parseInt(et_price.getText().toString()); //*****要加沒輸入的判斷*****
+        int price = 0; //可能沒有任何輸入 要給初值
+        try {
+             price = Integer.parseInt(et_price.getText().toString());
+        }catch (NumberFormatException e){
+            System.out.println("price數字轉換有誤");
+        }
         //咖啡圖片
-        TypedArray imgId_array = getResources().obtainTypedArray(R.array.drawable_array); //這裡要重新建立一個int[] 放resId
-        String drawable_name = imgId_array.getDrawable(i).toString();//*****回傳錯誤要解*****
-        int imgId = getResources().getIdentifier(drawable_name, "drawable", getActivity().getPackageName());//*****回傳錯誤要解*****
+        TypedArray imgId_array = mSpinnerAdapter.getDrawable_array();
+        int imgId = imgId_array.getResourceId(i, -1);//*****把DrawableId轉resId
 
-        Log.d(TAG, "title="+title+" price="+price+" imgId="+imgId+" drawable_name="+drawable_name);
+        Log.d(TAG, "title="+title+" price="+price+" imgId="+imgId+" imgId="+imgId);
 
         return new Coffee(title, price, imgId);
 

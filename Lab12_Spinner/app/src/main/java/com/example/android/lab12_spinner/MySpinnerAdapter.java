@@ -52,4 +52,12 @@ public class MySpinnerAdapter extends BaseAdapter {
 
         return v;
     }
+
+    public TypedArray getTitle_array() {
+        return title_array;
+    }
+
+    public TypedArray getDrawable_array() {
+        return drawable_array;
+    }
 }

@@ -1,6 +1,8 @@
 package com.example.android.lab12_spinner;
 
-public class Coffee {
+import java.io.Serializable;
+
+public class Coffee implements Serializable{
     private String title;
     private int price;
     private int imgId;
