@@ -1,10 +1,12 @@
 package com.example.android.lab12_spinner;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -21,7 +23,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements MyDialogFragment.MyDialogInterface, AdapterView.OnItemClickListener{
+public class MainActivity extends AppCompatActivity implements MyDialogFragment.MyDialogInterface, AdapterView.OnItemClickListener, MyEditFragment.MyEditInterface{
 
     private final String TAG = "TAG-"+this.getClass().getSimpleName();
 
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements MyDialogFragment.
     private MyListAdapter mListAdapter;
     private ArrayList<Coffee> mCoffeeList = new ArrayList<>();
     private static final String FILENAME= "userCoffeeList.data";
+    private int mItemSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +107,11 @@ public class MainActivity extends AppCompatActivity implements MyDialogFragment.
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Snackbar.make(fab, "點選了第"+i+"項", Snackbar.LENGTH_SHORT)
                 .setAction("Action", null).show();
+
+        mItemSelected = i;
+
+        DialogFragment dialog = new MyEditFragment();
+        dialog.show(getSupportFragmentManager(), "MyEditFragment");
     }
 
     @Override
@@ -154,5 +162,17 @@ public class MainActivity extends AppCompatActivity implements MyDialogFragment.
             }
         }
         Log.d(TAG,"after restoreData");
+    }
+
+    @Override
+    public void onClickEdit(Coffee coffee) {
+        mCoffeeList.set(mItemSelected, coffee);
+        mListAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onClickDelete() {
+        mCoffeeList.remove(mItemSelected);
+        mListAdapter.notifyDataSetChanged();
     }
 }
