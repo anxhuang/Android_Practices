@@ -32,6 +32,7 @@ Dialog: AlertDialog.Builder(), DialogInterface.OnClickListener, custom defined L
 Thread Animation: values/arrays, .obtainTypedArray(), AnimationDrawable, .start(), .stop(), Handler.postDelayed(Runnable, delayMillis), .removeCallbacks(Runnable), Button.setEnabled(bool)  
 
 ## Lab11
-ListView: FloatingActionButton, ListView.setEmptyView(view), .setAdapter, BaseAdapter, getCount(), getView(), onItemClick(), custom ArrayList<Model>, Model implements Serializable, .getSerializableExtra(), Adapter.notifyDataSetChanged(), extend custom Activity, list.get(index), list.set(index, item)  
- 
+ListView: FloatingActionButton, ListView.setEmptyView(view), .setAdapter, BaseAdapter, getCount(), getView(), .setOnItemClickListener(this), custom ArrayList<Model>, Model implements Serializable, .getSerializableExtra(), Adapter.notifyDataSetChanged(), extends custom Activity, list.get(index), list.set(index, item), onSaveInstanceState(), OnStop(), ObjectInput/OutputStream to file with try...catch...finally  
 
+## Lab12
+Spinner: Spinner.setAdapter, TypedArray, obtainTypedArray(ResArray), setOnItemSelectedListener(this), .setSelection(index), AlertDialog, builder.setIcon(ResID), dialog.setOnShowListener, editText.addTextChangedListener, custom getModel(), custom RuntimeException, extends custom Fragment, cutomer initializer

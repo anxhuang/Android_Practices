@@ -3,11 +3,13 @@ package com.example.android.lab12_spinner;
 import java.io.Serializable;
 
 public class Coffee implements Serializable{
+    private int id;
     private String title;
     private int price;
     private int imgId;
 
-    public Coffee(String title, int price, int img_resource_id) {
+    public Coffee(int id, String title, int price, int img_resource_id) {
+        this.id = id;
         this.title = title;
         this.price = price;
         this.imgId = img_resource_id;
@@ -37,10 +39,19 @@ public class Coffee implements Serializable{
         this.imgId = img_resource_id;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Coffee{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", price=" + price +
                 ", imgId=" + imgId +
                 '}';

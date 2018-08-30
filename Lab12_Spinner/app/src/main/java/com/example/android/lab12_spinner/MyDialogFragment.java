@@ -136,6 +136,7 @@ public class MyDialogFragment extends DialogFragment {
                     dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
                 }else {
                     dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                    et_price.setError("請輸入價格");
                 }
             }
 
@@ -155,7 +156,7 @@ public class MyDialogFragment extends DialogFragment {
         //咖啡價格
         int price = 0; //可能沒有任何輸入 要給初值
         try {
-             price = Integer.parseInt(et_price.getText().toString());
+            price = Integer.parseInt(et_price.getText().toString());
         }catch (NumberFormatException e){
             System.out.println("price數字轉換有誤");
         }
@@ -165,7 +166,7 @@ public class MyDialogFragment extends DialogFragment {
 
         Log.d(TAG, "title="+title+" price="+price+" imgId="+imgId+" imgId="+imgId);
 
-        return new Coffee(title, price, imgId);
+        return new Coffee(i,title, price, imgId);
 
     }
 

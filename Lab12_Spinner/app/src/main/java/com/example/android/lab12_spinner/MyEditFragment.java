@@ -10,10 +10,18 @@ import android.support.v7.app.AlertDialog;
 public class MyEditFragment extends MyDialogFragment {
 
     private MyEditInterface myEditHandler;
+    private Coffee mCoffee;
 
     interface MyEditInterface{
-        void onClickEdit(Coffee coffee);
+        void onClickModify(Coffee coffee);
         void onClickDelete();
+    }
+
+    //因為要保留empty constructor所以改寫成自訂的initializer
+    public static MyEditFragment newInstance(Coffee mCoffee){ //自訂initializer必為public static, return type = 自己
+        MyEditFragment f = new MyEditFragment();
+        f.mCoffee = mCoffee;
+        return f;
     }
 
     @NonNull
@@ -23,9 +31,6 @@ public class MyEditFragment extends MyDialogFragment {
         initMyEditHandler();
 
         return super.onCreateDialog(savedInstanceState);
-
-        //et_price.setText();******************要再傳入coffee來取值？
-
     }
 
     private void initMyEditHandler() {
@@ -39,14 +44,12 @@ public class MyEditFragment extends MyDialogFragment {
     }
 
     @Override
-    protected void initSpinner() {
-        super.initSpinner();
-
-        //mSpinner.setSelection();*******************要再傳入coffee來取值？
-    }
-
-    @Override
     protected AlertDialog initDialog() {
+        //因為initDialog在父類別是OnCreateDialog最後一個執行的，所以用來作追加設定剛好
+        et_price.setText(String.valueOf(mCoffee.getPrice()));
+        mSpinner.setSelection(mCoffee.getId());
+        //
+
         //設定AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("修改商品")
@@ -56,7 +59,7 @@ public class MyEditFragment extends MyDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Coffee coffee = getCoffee();
-                        myEditHandler.onClickEdit(coffee);
+                        myEditHandler.onClickModify(coffee);
                     }
                 })
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -72,15 +75,8 @@ public class MyEditFragment extends MyDialogFragment {
                     }
                 });
 
-        //讓"確定"按鈕預設不可按
-        final AlertDialog dialog = builder.create(); //setOnShowListener要在AlertDialog設定 不是Builder
 
-        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialogInterface) {
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
-            }
-        });
+        AlertDialog dialog = builder.create();
 
         //設定EditText輸入文字的監視器
         setEditTextWatcher(dialog);

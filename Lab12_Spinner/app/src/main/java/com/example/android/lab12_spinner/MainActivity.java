@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements MyDialogFragment.
         return super.onOptionsItemSelected(item);
     }
 
+    //===== MyDialogFragment.MyDialogInterface需實作的 =====
     @Override
     public void onClickOk(Coffee coffee) {
         Snackbar.make(fab, "收到確定 coffee = "+coffee, Snackbar.LENGTH_SHORT)
@@ -101,8 +102,9 @@ public class MainActivity extends AppCompatActivity implements MyDialogFragment.
         Snackbar.make(fab, "收到取消", Snackbar.LENGTH_SHORT)
                 .setAction("Action", null).show();
     }
+    //=======================================================
 
-    //ListView用的
+    //===== AdapterView.OnItemClickListener需實作的 =====
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Snackbar.make(fab, "點選了第"+i+"項", Snackbar.LENGTH_SHORT)
@@ -110,10 +112,26 @@ public class MainActivity extends AppCompatActivity implements MyDialogFragment.
 
         mItemSelected = i;
 
-        DialogFragment dialog = new MyEditFragment();
+        DialogFragment dialog = MyEditFragment.newInstance(mCoffeeList.get(i)); //使用自訂的initializer來傳入coffee
         dialog.show(getSupportFragmentManager(), "MyEditFragment");
     }
+    //=======================================================
 
+    //===== MyEditFragment.MyEditInterface需實作的 =====
+    @Override
+    public void onClickModify(Coffee coffee) {
+        mCoffeeList.set(mItemSelected, coffee);
+        mListAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onClickDelete() {
+        mCoffeeList.remove(mItemSelected);
+        mListAdapter.notifyDataSetChanged();
+    }
+    //=================================================
+
+    //===== 將mCoffeeList狀態儲存 =====
     @Override
     protected void onPause() {
         saveData();
@@ -163,16 +181,5 @@ public class MainActivity extends AppCompatActivity implements MyDialogFragment.
         }
         Log.d(TAG,"after restoreData");
     }
-
-    @Override
-    public void onClickEdit(Coffee coffee) {
-        mCoffeeList.set(mItemSelected, coffee);
-        mListAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onClickDelete() {
-        mCoffeeList.remove(mItemSelected);
-        mListAdapter.notifyDataSetChanged();
-    }
+    //=================================
 }

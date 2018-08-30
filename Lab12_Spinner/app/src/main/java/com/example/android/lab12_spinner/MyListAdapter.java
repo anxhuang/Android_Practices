@@ -44,7 +44,7 @@ public class MyListAdapter extends BaseAdapter {
         TextView tvItemPrice = v.findViewById(R.id.item_price);
         ImageView ivItemImage = v.findViewById(R.id.itemImage);
 
-        tvItemId.setText(String.valueOf(i));
+        tvItemId.setText(String.valueOf(coffees.get(i).getId()));
         tvItemTitle.setText(coffees.get(i).getTitle());
         tvItemPrice.setText(String.valueOf(coffees.get(i).getPrice()));
         ivItemImage.setImageResource(coffees.get(i).getImgId());
