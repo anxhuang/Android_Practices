@@ -2,7 +2,6 @@
 
 Language: Java 1.7.0  
 Tools: Android Studio 3.1.3 (macOS/Windows)  
-Usage: Import as a project with each individual folders  
 
 ## Lab01
 Layout: layout/*.xml, Linear, RelativeLayout, layout_weight, TextView, ImageView, EditText  
